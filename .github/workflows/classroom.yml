@@ -1,0 +1,72 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Add
+      id: add
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Add
+        setup-command: ''
+        command: "./calculator"
+        input: 1 + 1
+        expected-output: '2'
+        comparison-method: exact
+        timeout: 10
+        max-score: 10
+    - name: Substract
+      id: substract
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Substract
+        setup-command: ''
+        command: "./calculator"
+        input: 3 - 1
+        expected-output: '2'
+        comparison-method: exact
+        timeout: 10
+        max-score: 10
+    - name: Multiply
+      id: multiply
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Multiply
+        setup-command: ''
+        command: "./calculator"
+        input: 3 * 1
+        expected-output: '3'
+        comparison-method: exact
+        timeout: 10
+        max-score: 10
+    - name: Divide
+      id: divide
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Divide
+        setup-command: ''
+        command: "./calculator"
+        input: 3 / 1
+        expected-output: '3'
+        comparison-method: exact
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        ADD_RESULTS: "${{steps.add.outputs.result}}"
+        SUBSTRACT_RESULTS: "${{steps.substract.outputs.result}}"
+        MULTIPLY_RESULTS: "${{steps.multiply.outputs.result}}"
+        DIVIDE_RESULTS: "${{steps.divide.outputs.result}}"
+      with:
+        runners: add,substract,multiply,divide

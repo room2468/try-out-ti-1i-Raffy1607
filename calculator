@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+# HINT: You can test the result of script using following command
+# echo "1 + 1" | ./calculator
+
+# Read expression from stdin
+read -r expression
+
+# Calculate result using bc (supports +, -, *, /)
+# TODO: evaluate $expression using bc command and store in $result variable
+
+echo "$result"
