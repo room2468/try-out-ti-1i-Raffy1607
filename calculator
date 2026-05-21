@@ -1,3 +1,4 @@
 #!/bin/bash
-gcc calculator.c -o calc
-./calc
+
+read expression
+echo "$expression" | bc
