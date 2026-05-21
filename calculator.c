@@ -4,27 +4,21 @@ int main() {
     int a, b;
     char op;
 
-    scanf("%d %c %d", &a, &op, &b);
+    if (scanf("%d %c %d", &a, &op, &b) != 3) {
+        return 1;
+    }
 
-    switch(op) {
-        case '+':
-            printf("%d\n", a + b);
-            break;
-
-        case '-':
-            printf("%d\n", a - b);
-            break;
-
-        case '*':
-            printf("%d\n", a * b);
-            break;
-
-        case '/':
-            printf("%d\n", a / b);
-            break;
-
-        default:
-            printf("Invalid operator\n");
+    if (op == '+') {
+        printf("%d\n", a + b);
+    }
+    else if (op == '-') {
+        printf("%d\n", a - b);
+    }
+    else if (op == '*') {
+        printf("%d\n", a * b);
+    }
+    else if (op == '/') {
+        printf("%d\n", a / b);
     }
 
     return 0;
