@@ -1,4 +1,4 @@
 #!/bin/bash
 
 read expression
-echo "$expression" | bc
+echo $((expression))
