@@ -4,21 +4,24 @@ int main() {
     int a, b;
     char op;
 
-    if (scanf("%d %c %d", &a, &op, &b) != 3) {
-        return 1;
-    }
+    scanf("%d %c %d", &a, &op, &b);
 
-    if (op == '+') {
-        printf("%d\n", a + b);
-    }
-    else if (op == '-') {
-        printf("%d\n", a - b);
-    }
-    else if (op == '*') {
-        printf("%d\n", a * b);
-    }
-    else if (op == '/') {
-        printf("%d\n", a / b);
+    switch(op) {
+        case '+':
+            printf("%d\n", a + b);
+            break;
+
+        case '-':
+            printf("%d\n", a - b);
+            break;
+
+        case '*':
+            printf("%d\n", a * b);
+            break;
+
+        case '/':
+            printf("%d\n", a / b);
+            break;
     }
 
     return 0;
